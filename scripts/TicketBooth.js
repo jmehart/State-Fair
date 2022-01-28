@@ -1,6 +1,18 @@
 const contentTarget = document.querySelector(".entry")
 const eventHub = document.querySelector("#state-fair")
 
+// This is a module-level variable. It is not scoped to a function
+const ticketContentTarget = document.querySelector(".customers")
+
+document.addEventListener("stateChanged", event => {
+    // This variable is scoped to a function, not the module
+    const ticketTotal = ridesTicketCount + foodTicketCount + gamesTicketCount + sideshowTicketCount + bigSpendersTicketCount
+    ticketContentTarget.innerHTML = 
+    `<div class="customers">
+    Total tickets purchased: ${ticketTotal}
+    </div>`
+})
+
 eventHub.addEventListener
 ("click",
 (clickEvent) => {

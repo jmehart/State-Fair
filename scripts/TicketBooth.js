@@ -1,17 +1,35 @@
+import { rideTicketCount } from "./rides/RideTicketHolders.js"
+import { foodTicketCount } from "./food/FoodTicketHolders.js"
+import { gamesTicketCount } from "./games/GameTicketHolders.js"
+import { sideshowTicketCount } from "./sideshow/Sideshows.js"
+import { bigSpendersTicketCount } from "./bigSpenders/BigSpenders.js"
+
 const contentTarget = document.querySelector(".entry")
 const eventHub = document.querySelector("#state-fair")
 
 // This is a module-level variable. It is not scoped to a function
 const ticketContentTarget = document.querySelector(".customers")
 
+
 document.addEventListener("stateChanged", event => {
     // This variable is scoped to a function, not the module
-    const ticketTotal = ridesTicketCount + foodTicketCount + gamesTicketCount + sideshowTicketCount + bigSpendersTicketCount
+    const ticketTotal = rideTicketCount + foodTicketCount + gamesTicketCount + sideshowTicketCount + bigSpendersTicketCount
     ticketContentTarget.innerHTML = 
     `<div class="customers">
     Total tickets purchased: ${ticketTotal}
     </div>`
 })
+
+export const TicketTotal = () => {
+    ticketContentTarget.innerHTML = 
+    
+    `
+    <div class="customers">
+    Total tickets purchased: 0
+    </div>
+    `
+    
+}
 
 eventHub.addEventListener
 ("click",
